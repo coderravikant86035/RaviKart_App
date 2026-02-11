@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>RaviCard - दुकानदार रजिस्ट्रेशन</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 400px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px #ccc; margin: auto; }
+        h2 { color: #333; text-align: center; }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+        .ai-note { font-size: 12px; color: #666; font-style: italic; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>RaviCard Business</h2>
+    <p>अपनी दुकान को डिजिटल बनाएं</p>
+    
+    <form>
+        <input type="text" placeholder="दुकान का नाम" required>
+        <input type="text" placeholder="मालिक का नाम" required>
+        <input type="number" placeholder="मोबाइल नंबर" required>
+        
+        <select>
+            <option>दुकान की कैटेगरी चुनें</option>
+            <option>किराना (Grocery)</option>
+            <option>कपड़े (Clothing)</option>
+            <option>इलेक्ट्रॉनिक्स (Electronics)</option>
+            <option>अन्य (Others)</option>
+        </select>
+        
+        <input type="text" placeholder="दुकान का पता (Address)">
+        
+        <button type="button" onclick="alert('RaviCard AI आपकी दुकान को वेरीफाई कर रहा है...')">रजिस्टर करें</button>
+    </form>
+    
+    <p class="ai-note">✨ RaviCard AI आपके एड्रेस और मोबाइल को ऑटो-वेरीफाई करेगा।</p>
+</div>
+
+</body>
+</html>
