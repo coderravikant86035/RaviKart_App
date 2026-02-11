@@ -2,15 +2,17 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>RaviCard - दुकानदार रजिस्ट्रेशन</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaviCard Business - रजिस्ट्रेशन</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
-        .container { max-width: 400px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px #ccc; margin: auto; }
-        h2 { color: #333; text-align: center; }
-        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
-        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { max-width: 400px; width: 90%; background: white; padding: 30px; border-radius: 15px; box-shadow: 0px 10px 25px rgba(0,0,0,0.1); text-align: center; }
+        h2 { color: #333; margin-bottom: 5px; }
+        p { color: #666; margin-bottom: 20px; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
+        button { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
         button:hover { background-color: #218838; }
-        .ai-note { font-size: 12px; color: #666; font-style: italic; margin-top: 10px; }
+        .ai-note { font-size: 12px; color: #888; margin-top: 15px; display: block; }
     </style>
 </head>
 <body>
@@ -19,26 +21,60 @@
     <h2>RaviCard Business</h2>
     <p>अपनी दुकान को डिजिटल बनाएं</p>
     
-    <form>
-        <input type="text" placeholder="दुकान का नाम" required>
-        <input type="text" placeholder="मालिक का नाम" required>
-        <input type="number" placeholder="मोबाइल नंबर" required>
+    <form id="regForm">
+        <input type="text" id="shopName" placeholder="दुकान का नाम" required>
+        <input type="text" id="ownerName" placeholder="मालिक का नाम" required>
+        <input type="number" id="phone" placeholder="मोबाइल नंबर" required>
         
-        <select>
-            <option>दुकान की कैटेगरी चुनें</option>
-            <option>किराना (Grocery)</option>
-            <option>कपड़े (Clothing)</option>
-            <option>इलेक्ट्रॉनिक्स (Electronics)</option>
-            <option>अन्य (Others)</option>
+        <select id="category">
+            <option value="">दुकान की कैटेगरी चुनें</option>
+            <option value="Grocery">किराना (Grocery)</option>
+            <option value="Clothing">कपड़े (Clothing)</option>
+            <option value="Electronics">इलेक्ट्रॉनिक्स (Electronics)</option>
+            <option value="Others">अन्य (Others)</option>
         </select>
         
-        <input type="text" placeholder="दुकान का पता (Address)">
+        <input type="text" id="address" placeholder="दुकान का पता (Address)" required>
         
-        <button type="button" onclick="alert('RaviCard AI आपकी दुकान को वेरीफाई कर रहा है...')">रजिस्टर करें</button>
+        <button type="button" onclick="startRegistration()">रजिस्टर करें</button>
     </form>
     
-    <p class="ai-note">✨ RaviCard AI आपके एड्रेस और मोबाइल को ऑटो-वेरीफाई करेगा।</p>
+    <span class="ai-note">✨ RaviCard AI आपके एड्रेस और मोबाइल को ऑटो-वेरीफाई करेगा।</span>
 </div>
+
+<script>
+    function startRegistration() {
+        // फॉर्म से डेटा लेना
+        const sName = document.getElementById('shopName').value;
+        const oName = document.getElementById('ownerName').value;
+        const pNum = document.getElementById('phone').value;
+        const addr = document.getElementById('address').value;
+
+        // चेक करना कि क्या सब कुछ भरा है
+        if(sName === "" || pNum === "" || addr === "") {
+            alert("कृपया सभी जानकारी सही-सही भरें!");
+            return;
+        }
+
+        // ब्राउज़र की मेमोरी में डेटा सेव करना (LocalStorage)
+        const vendorInfo = {
+            shop: sName,
+            owner: oName,
+            mobile: pNum,
+            location: addr
+        };
+        localStorage.setItem('currentUser', JSON.stringify(vendorInfo));
+
+        // AI वाला मैसेज दिखाना
+        alert("RaviCard AI: नमस्ते " + oName + " जी! आपकी दुकान '" + sName + "' को वेरीफाई किया जा रहा है...");
+        
+        // 2 सेकंड बाद अगले पेज पर भेजना
+        setTimeout(function() {
+            alert("वेरिफिकेशन सफल! चलिए अब अपना सामान अपलोड करें।");
+            window.location.href = "upload-product.html";
+        }, 2000);
+    }
+</script>
 
 </body>
 </html>
