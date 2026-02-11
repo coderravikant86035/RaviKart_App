@@ -7,12 +7,8 @@
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .container { max-width: 400px; width: 90%; background: white; padding: 30px; border-radius: 15px; box-shadow: 0px 10px 25px rgba(0,0,0,0.1); text-align: center; }
-        h2 { color: #333; margin-bottom: 5px; }
-        p { color: #666; margin-bottom: 20px; }
-        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
-        button { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
-        button:hover { background-color: #218838; }
-        .ai-note { font-size: 12px; color: #888; margin-top: 15px; display: block; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -27,52 +23,38 @@
         <input type="number" id="phone" placeholder="मोबाइल नंबर" required>
         
         <select id="category">
-            <option value="">दुकान की कैटेगरी चुनें</option>
-            <option value="Grocery">किराना (Grocery)</option>
-            <option value="Clothing">कपड़े (Clothing)</option>
-            <option value="Electronics">इलेक्ट्रॉनिक्स (Electronics)</option>
-            <option value="Others">अन्य (Others)</option>
+            <option value="">कैटेगरी चुनें</option>
+            <option value="Cyber Hub">साइबर हब</option>
+            <option value="Grocery">किराना</option>
         </select>
         
-        <input type="text" id="address" placeholder="दुकान का पता (Address)" required>
+        <input type="text" id="address" placeholder="दुकान का पता" required>
         
-        <button type="button" onclick="startRegistration()">रजिस्टर करें</button>
+        <button type="button" onclick="validateAndRegister()">रजिस्टर करें</button>
     </form>
-    
-    <span class="ai-note">✨ RaviCard AI आपके एड्रेस और मोबाइल को ऑटो-वेरीफाई करेगा।</span>
 </div>
 
 <script>
-    function startRegistration() {
-        // फॉर्म से डेटा लेना
+    function validateAndRegister() {
+        // 1. डेटा को पढ़ना
         const sName = document.getElementById('shopName').value;
         const oName = document.getElementById('ownerName').value;
-        const pNum = document.getElementById('phone').value;
-        const addr = document.getElementById('address').value;
-
-        // चेक करना कि क्या सब कुछ भरा है
-        if(sName === "" || pNum === "" || addr === "") {
-            alert("कृपया सभी जानकारी सही-सही भरें!");
+        
+        if(sName === "" || oName === "") {
+            alert("कृपया नाम भरें!");
             return;
         }
 
-        // ब्राउज़र की मेमोरी में डेटा सेव करना (LocalStorage)
-        const vendorInfo = {
-            shop: sName,
-            owner: oName,
-            mobile: pNum,
-            location: addr
-        };
-        localStorage.setItem('currentUser', JSON.stringify(vendorInfo));
+        // 2. ब्राउज़र की मेमोरी में डेटा सेव करना
+        localStorage.setItem('shopName', sName);
+        localStorage.setItem('isRegistered', 'true');
 
-        // AI वाला मैसेज दिखाना
-        alert("RaviCard AI: नमस्ते " + oName + " जी! आपकी दुकान '" + sName + "' को वेरीफाई किया जा रहा है...");
-        
-        // 2 सेकंड बाद अगले पेज पर भेजना
-        setTimeout(function() {
-            alert("वेरिफिकेशन सफल! चलिए अब अपना सामान अपलोड करें।");
-            window.location.href = "upload-product.html";
-        }, 2000);
+        // 3. मैसेज दिखाना
+        alert("RaviCard AI: " + oName + " जी, आपकी दुकान '" + sName + "' रजिस्टर हो गई है!");
+
+        // 4. असली जादू: अगले पेज पर भेजना (Redirect)
+        // ध्यान दें: 'upload-product.html' फाइल आपके GitHub में होनी चाहिए
+        window.location.href = "upload-product.html";
     }
 </script>
 
