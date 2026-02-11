@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>RaviCard - सामान अपलोड करें</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; padding: 20px; }
+        .upload-container { max-width: 500px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: auto; }
+        h2 { color: #007bff; text-align: center; }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        input, textarea, select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .ai-upload-box { border: 2px dashed #007bff; padding: 20px; text-align: center; color: #007bff; cursor: pointer; margin-top: 10px; border-radius: 8px; }
+        .ai-btn { background-color: #6f42c1; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-size: 16px; margin-top: 20px; cursor: pointer; }
+        .ai-btn:hover { background-color: #59359a; }
+        .status { font-size: 13px; color: #28a745; text-align: center; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="upload-container">
+    <h2>सामान की जानकारी भरें</h2>
+    
+    <label>सामान की फोटो चुनें</label>
+    <div class="ai-upload-box" onclick="alert('कैमरा खुल रहा है... AI फोटो स्कैन करेगा')">
+        📸 फोटो खींचें या अपलोड करें <br>
+        <small>(AI अपने आप नाम और कैटेगरी पहचान लेगा)</small>
+    </div>
+
+    <form id="productForm">
+        <label>सामान का नाम</label>
+        <input type="text" id="pName" placeholder="उदा: कॉटन शर्ट, ताज़ा सेब">
+
+        <label>कीमत (₹)</label>
+        <input type="number" id="pPrice" placeholder="कीमत लिखें">
+
+        <label>स्टॉक (कितना सामान है?)</label>
+        <input type="number" id="pStock" placeholder="संख्या लिखें">
+
+        <label>विवरण (Description)</label>
+        <textarea id="pDesc" rows="3" placeholder="सामान के बारे में कुछ बताएं..."></textarea>
+
+        <button type="button" class="ai-btn" onclick="showStatus()">RaviCard पर लाइव करें</button>
+        <p id="statusMsg" class="status">✅ AI ने सामान चेक कर लिया है। अब यह ग्राहकों को दिखेगा!</p>
+    </form>
+</div>
+
+<script>
+    function showStatus() {
+        document.getElementById('statusMsg').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
