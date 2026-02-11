@@ -49,6 +49,32 @@
         document.getElementById('statusMsg').style.display = 'block';
     }
 </script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
+<script>
+  // आपके डेटाबेस की सेटिंग्स (इसे बाद में असली कीज़ से बदलेंगे)
+  const firebaseConfig = {
+    databaseURL: "https://ravicard-app-default-rtdb.firebaseio.com/"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+
+  function showStatus() {
+    // फॉर्म से जानकारी उठाना
+    const name = document.getElementById('pName').value;
+    const price = document.getElementById('pPrice').value;
+
+    // डेटाबेस में सेव करना
+    database.ref('products/').push({
+      productName: name,
+      productPrice: price,
+      timestamp: Date.now()
+    }).then(() => {
+        document.getElementById('statusMsg').style.display = 'block';
+        alert("बधाई हो! आपका सामान RaviCard पर लाइव हो गया।");
+    });
+  }
+</script>
 </body>
 </html>
