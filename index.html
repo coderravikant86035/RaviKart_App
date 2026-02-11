@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaviCard - शॉपिंग</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; }
+        header { background: #007bff; color: white; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; }
+        .search-bar { padding: 10px; text-align: center; background: white; }
+        input[type="text"] { width: 80%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        
+        .product-grid { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
+        .product-card { background: white; border-radius: 10px; width: 160px; margin: 10px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        .product-card img { width: 100%; border-radius: 5px; height: 120px; object-fit: cover; }
+        .price { color: #28a745; font-weight: bold; font-size: 18px; margin: 10px 0; }
+        .buy-btn { background: #ff9f00; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        
+        .ai-badge { background: #e3f2fd; color: #007bff; font-size: 12px; padding: 5px; border-radius: 5px; display: inline-block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<header>RaviCard Shopping</header>
+
+<div class="search-bar">
+    <input type="text" placeholder="AI से पूछें: 'मेरे लिए अच्छे जूते दिखाओ'...">
+</div>
+
+<div class="product-grid">
+    <div class="product-card">
+        <span class="ai-badge">AI Recommended</span>
+        <img src="https://via.placeholder.com/150" alt="Shoes">
+        <h4>स्पोर्ट्स जूते</h4>
+        <p class="price">₹1,200</p>
+        <button class="buy-btn">अभी देखें</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/150" alt="Phone">
+        <h4>स्मार्टफोन</h4>
+        <p class="price">₹15,000</p>
+        <button class="buy-btn">अभी देखें</button>
+    </div>
+    
+    <div class="product-card">
+        <img src="https://via.placeholder.com/150" alt="Watch">
+        <h4>स्मार्ट वॉच</h4>
+        <p class="price">₹2,500</p>
+        <button class="buy-btn">अभी देखें</button>
+    </div>
+</div>
+
+</body>
+</html>
