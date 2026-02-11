@@ -21,3 +21,23 @@ def recommend_products():
 
 if __name__ == '__main__':
     app.run(debug=True)
+# RaviCard AI Assistant Logic
+def ravicard_ai_response(user_query):
+    query = user_query.lower()
+    
+    # ग्राहकों के लिए AI का जवाब
+    if "सस्ता" in query or "cheap" in query:
+        return "RaviCard AI: हमारे पास सबसे सस्ता सामान 'किराना' सेक्शन में उपलब्ध है। क्या मैं लिस्ट दिखाऊं?"
+    
+    elif "दुकान" in query or "shop" in query:
+        return "RaviCard AI: आपके आस-पास 5 दुकानें खुली हैं। आप 'Visit' बटन दबाकर टाइम कन्फर्म कर सकते हैं।"
+
+    # दुकानदारों के लिए AI का जवाब
+    elif "बिक्री" in query or "sales" in query:
+        return "RaviCard AI: आज आपके पास 10 नए ग्राहक आए। सबसे ज्यादा मांग 'जूतों' की है।"
+
+    else:
+        return "RaviCard AI: मैं आपकी कैसे मदद कर सकता हूँ? आप सामान या दुकान के बारे में पूछ सकते हैं।"
+
+# उदाहरण के लिए टेस्ट
+print(ravicard_ai_response("सबसे सस्ता सामान दिखाओ"))
